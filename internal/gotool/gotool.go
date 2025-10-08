@@ -81,7 +81,7 @@ func appendTools(goMod *modfile.File, toolPkgs []string) error {
 	var merr error
 	for _, toolPkg := range toolPkgs {
 		if err := goMod.AddTool(toolPkg); err != nil {
-			multierror.Append(merr, err)
+			merr = multierror.Append(merr, err)
 		}
 	}
 	return merr
