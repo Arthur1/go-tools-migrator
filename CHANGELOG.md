@@ -1,5 +1,8 @@
 # Changelog
 
+## [v0.1.2](https://github.com/Arthur1/go-tools-migrator/compare/v0.1.1...v0.1.2) - 2025-10-08
+- chore: enable immutable release by @Arthur1 in https://github.com/Arthur1/go-tools-migrator/pull/10
+
 ## [v0.1.1](https://github.com/Arthur1/go-tools-migrator/compare/v0.1.0...v0.1.1) - 2025-10-08
 - chore: fix command name on GoReleaser config by @Arthur1 in https://github.com/Arthur1/go-tools-migrator/pull/8
 
