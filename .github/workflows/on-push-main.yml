@@ -1,0 +1,24 @@
+name: CI for main branch
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test-go:
+    uses: ./.github/workflows/wf-test-go.yml
+
+  tagpr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/create-github-app-token@67018539274d69449ef7c02e8e71183d1719ab42 # v2.1.4
+        id: app-token
+        with:
+          app-id: 364898
+          private-key: ${{ secrets.ARTHUR1_BOT_PRIVATE_KEY }}
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+        with:
+          token: ${{ steps.app-token.outputs.token }}
+      - uses: Songmu/tagpr@9c294c8b7b1815a5f3b7c61d6ee6aa50ac25b030 # v1.8.4
+        env:
+          GITHUB_TOKEN: ${{ steps.app-token.outputs.token }}

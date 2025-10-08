@@ -12,11 +12,11 @@ func CopyFile(t testing.TB, src, dst string) {
 	t.Helper()
 	sourceFile, err := os.Open(src)
 	require.NoError(t, err)
-	defer sourceFile.Close()
+	defer sourceFile.Close() //nolint:errcheck
 
 	destFile, err := os.Create(dst)
 	require.NoError(t, err)
-	defer destFile.Close()
+	defer destFile.Close() //nolint:errcheck
 
 	_, err = io.Copy(destFile, sourceFile)
 	require.NoError(t, err)

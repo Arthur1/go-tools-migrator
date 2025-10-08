@@ -20,8 +20,7 @@ type cli struct {
 
 func (c *cli) Run() error {
 	if c.Version {
-		printVersion()
-		return nil
+		return printVersion()
 	}
 
 	result, err := gotool.Migrate(c.ToolsGoFile, c.GoModFile, c.DryRun)
@@ -30,7 +29,7 @@ func (c *cli) Run() error {
 	}
 
 	if c.DryRun {
-		fmt.Printf(result)
+		fmt.Print(result)
 	} else {
 		fmt.Fprintf(os.Stderr, "✅ Succeeded to migrate.\n")
 	}
@@ -53,11 +52,11 @@ func (c *Cli) Run() {
 	kctx.FatalIfErrorf(err)
 }
 
-func printVersion() {
+func printVersion() error {
 	writer := tabwriter.NewWriter(os.Stdout, 0, 8, 1, '\t', tabwriter.AlignRight)
-	fmt.Fprintf(writer, "go-tools-migrator: a CLI tool that replaces tools management via tools.go with go.mod tool directive.\n")
-	fmt.Fprintf(writer, "Version:\t%s\n", gotoolsmigrator.Version)
-	fmt.Fprintf(writer, "Go version:\t%s\n", runtime.Version())
-	fmt.Fprintf(writer, "Arch:\t%s\n", runtime.GOARCH)
-	writer.Flush()
+	fmt.Fprintf(writer, "go-tools-migrator: a CLI tool that replaces tools management via tools.go with go.mod tool directive.\n") //nolint:errcheck
+	fmt.Fprintf(writer, "Version:\t%s\n", gotoolsmigrator.Version)                                                                 //nolint:errcheck
+	fmt.Fprintf(writer, "Go version:\t%s\n", runtime.Version())                                                                    //nolint:errcheck
+	fmt.Fprintf(writer, "Arch:\t%s\n", runtime.GOARCH)                                                                             //nolint:errcheck
+	return writer.Flush()
 }
