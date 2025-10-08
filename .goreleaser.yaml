@@ -5,14 +5,14 @@ before:
     - go mod tidy
 
 builds:
-  - main: ./cmd/go-tool-migrator
+  - main: ./cmd/go-tools-migrator
     env:
       - CGO_ENABLED=0
     goos:
       - linux
       - darwin
     ldflags:
-      - -s -w -X github.com/Arthur1/go-tool-migrator.Version={{.Version}}
+      - -s -w -X github.com/Arthur1/go-tools-migrator.Version={{.Version}}
 
 archives:
   - formats:
