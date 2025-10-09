@@ -29,3 +29,13 @@ jobs:
         run: |
           go tool tparse -all -file ./go-test.out
           go tool tparse -all -file ./go-test.out -format markdown >> "$GITHUB_STEP_SUMMARY"
+
+  check-licenses:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@08c6903cd8c0fde910a37f88322edcfb5dd907a8 # v5.0.0
+      - uses: actions/setup-go@44694675825211faa026b3c33043df3e48a5fa00 # v6.0.0
+        with:
+          go-version-file: go.mod
+      - run: |
+          go tool go-licenses check ./...
