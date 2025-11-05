@@ -2,7 +2,7 @@ module github.com/Arthur1/go-tools-migrator
 
 go 1.25.0
 
-toolchain go1.25.2
+toolchain go1.25.4
 
 require (
 	github.com/alecthomas/kong v1.12.1
