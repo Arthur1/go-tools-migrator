@@ -5,7 +5,7 @@ go 1.25.0
 toolchain go1.25.2
 
 require (
-	github.com/alecthomas/kong v1.12.1
+	github.com/alecthomas/kong v1.13.0
 	github.com/hashicorp/go-multierror v1.1.1
 	github.com/natefinch/atomic v1.0.1
 	github.com/stretchr/testify v1.11.1
